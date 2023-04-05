@@ -44,7 +44,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('backendTheme.products.show',[
+            'product'=>$product
+        ]);
     }
 
     /**
@@ -68,6 +70,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }
