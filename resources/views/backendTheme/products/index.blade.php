@@ -27,8 +27,28 @@
                                 <tr>
                                     <td>{{++$l}}</td>
                                     <td>{{$product->title}}</td>
-                                    <td>{{$product->Description}}</td>
+                                    <td>{{$product->description}}</td>
                                     <td>{{$product->price}}</td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{route('products.show',
+                                                    ['product'=>$product->id])}}">Show</a>
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{route('products.edit',
+                                                    ['product'=>$product->id])}}">Edit</a>
+
+                                        <form style="display:inline"
+                                        action="{{route('products.destroy',
+                                            ['product'=>$product->id])}}"
+                                        method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('want to delete?')"
+                                        style="font-size: 11px">Delete</button>
+
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
 
