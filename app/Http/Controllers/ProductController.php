@@ -37,6 +37,7 @@ class ProductController extends Controller
             'description'=> $request->description,
             'price'=> $request->price
         ]);
+        return redirect()->route('products.index');
     }
 
     /**
