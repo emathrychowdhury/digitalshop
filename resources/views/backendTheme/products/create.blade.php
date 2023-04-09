@@ -19,6 +19,9 @@
                             id="inputTitle"
                             name="title"
                             value="">
+                        @error('title')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
@@ -34,6 +37,9 @@
                         placeholder="textarea">
 
                         </textarea>
+                        @error('description')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
 
                     </div>
                 </div>
@@ -46,6 +52,9 @@
                             id="inputPrice"
                             name="price"
                             value="">
+                        @error('price')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
@@ -57,6 +66,9 @@
                             id="inputImage"
                             name="image"
                             value="">
+                        @error('image')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
 

@@ -9,6 +9,12 @@
                         <a href="{{route('products.create')}}">Add New Product</a>
                     </div>
                     <div class="card-body">
+                        @if(session('message'))
+                            <div class="alert alert-success">
+                                <span class="close" data-dismiss="alert"></span>
+                                <strong>{{session('message')}}</strong>
+                            </div>
+                        @endif
                         <table class="table ">
                             <thead>
                             <tr>

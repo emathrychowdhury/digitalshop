@@ -36,13 +36,21 @@ class ProductController extends Controller
 //        dd($request);
 //        $imagName=$request->file();
 //        dd('imagName');
+        $request->validate([
+            'title'=> ['required','min:3'],
+            'description'=> ['required'],
+            'price'=> ['required','min:2'],
+            'image'=> ['required'],
+        ]);
         Product::create([
             'title'=> $request->title,
             'description'=> $request->description,
             'price'=> $request->price,
+            'status'=>1,
             'image'=>$this->uploadImage(request()->file('image'))
         ]);
-        return redirect()->route('products.index');
+
+        return redirect()->route('products.index')->withMessage('product add created successfully?');
     }
 
     /**
