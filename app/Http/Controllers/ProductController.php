@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -31,11 +32,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+//        $request->file();
 //        dd($request);
+//        $imagName=$request->file();
+//        dd('imagName');
         Product::create([
             'title'=> $request->title,
             'description'=> $request->description,
-            'price'=> $request->price
+            'price'=> $request->price,
+            'image'=>$this->uploadImage(request()->file('image'))
         ]);
         return redirect()->route('products.index');
     }
@@ -55,7 +60,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('backendTheme.products.edit',[
+            'product'=>$product
+        ]);
     }
 
     /**
@@ -63,7 +70,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'price'=> $request->price,
+//            'image'=>$this->uploadImage(request()->file('image'))
+        ]);
     }
 
     /**
@@ -73,5 +85,14 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function uploadImage($file)
+    {
+        $fileName=time().'.'.$file->getClientOriginalExtension();
+        Image::make($file)
+            ->resize(200,200)
+            ->save(storage_path().'/app/public/'.$fileName);
+        return $fileName;
     }
 }

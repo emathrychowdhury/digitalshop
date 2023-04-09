@@ -9,14 +9,15 @@
                         <a href="{{route('products.create')}}">Add New Product</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table ">
                             <thead>
                             <tr>
                                 <th>SL</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Price</th>
-                                <th width="400">Action</th>
+                                <th>Status</th>
+                                <th width="200">Action</th>
                             </tr>
 
                             </thead>
@@ -29,6 +30,13 @@
                                     <td>{{$product->title}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->price}}</td>
+                                    <td>
+                                        @if($product->status ==1)
+                                            <span class="badge rounded-pill bg-success">Action</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-success">InAction</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a class="btn btn-info btn-sm"
                                             href="{{route('products.show',
@@ -49,6 +57,8 @@
 
                                         </form>
                                     </td>
+
+
                                 </tr>
                             @endforeach
 
