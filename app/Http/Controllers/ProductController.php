@@ -50,7 +50,7 @@ class ProductController extends Controller
             'image'=>$this->uploadImage(request()->file('image'))
         ]);
 
-        return redirect()->route('products.index')->withMessage('product add created successfully?');
+        return redirect()->route('products.index')->withMessage('Product added successfully');
     }
 
     /**
@@ -68,6 +68,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+
         return view('backendTheme.products.edit',[
             'product'=>$product
         ]);
@@ -78,12 +79,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update([
+        $request->validate([
+            'title'=> ['required','min:3'],
+            'price'=> ['required','min:2'],
+        ]);
+        $requestData=[
             'title'=> $request->title,
             'description'=> $request->description,
             'price'=> $request->price,
+        ];
+        if($request->hasFile('image')){
+            $requestData['image']=$this->uploadImage(request()->file('image'));
+        }
+        $product->update($requestData);
+
 //            'image'=>$this->uploadImage(request()->file('image'))
-        ]);
+        return redirect()->route('products.index')->withMessage('Product updated
+        successfully');
     }
 
     /**
@@ -92,7 +104,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->withMessage('product deleted successfully');
     }
 
     public function uploadImage($file)

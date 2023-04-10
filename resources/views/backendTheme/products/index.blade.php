@@ -63,8 +63,22 @@
 
                                         </form>
                                     </td>
-
-
+{{--                                    <td>--}}
+{{--                                        @if($product->status==1)--}}
+{{--                                            <a--}}
+{{--                                            href="{{route('$products.edit',['product'=>$product->id]) }}"--}}
+{{--                                            class="btn btn-success btn-sm" title="InActive">--}}
+{{--                                                <i class="fa-solid fa-thumbs-down"></i>--}}
+{{--                                            </a>--}}
+{{--                                        @else--}}
+{{--                                            <a--}}
+{{--                                               href="{{route('$products.edit',['product'=>$product->id]) }}"--}}
+{{--                                               class="btn btn-success btn-sm"--}}
+{{--                                               title="InActive">--}}
+{{--                                                <i class="fa-solid fa-thumbs-down"></i>--}}
+{{--                                            </a>--}}
+{{--                                        @endif--}}
+{{--                                    </td>--}}
                                 </tr>
                             @endforeach
 

@@ -20,6 +20,9 @@
                             id="inputTitle"
                             name="title"
                             value="{{old('title',$product->title)}}">
+                        @error('title')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
@@ -33,9 +36,10 @@
                             name="description"
                             value="{{old('description',$product->description)}}"
                             placeholder="textarea">
-
-
                         </textarea>
+                        @error('price')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
 
                     </div>
                 </div>
@@ -48,6 +52,10 @@
                             id="inputPrice"
                             name="price"
                             value="{{old('description',$product->price)}}">
+                        @error('description')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+
                     </div>
                 </div>
                 <div class="mb-3">
@@ -59,6 +67,9 @@
                             id="inputImage"
                             name="image"
                             value="{{old('description',$product->image)}}">
+                        @error('image')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
 
