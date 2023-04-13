@@ -9,8 +9,8 @@
         </div>
         <div class="card-body">
 
-            <h5>Title:{{$slider->slider_title}}</h5>
-            <h5>Description:{{$slider->short_title}}</h5>
+            <h5>Title:{{$slider-> slider_title}}</h5>
+            <h5>Short Title:{{$slider-> short_title}}</h5>
 
                 <img src="/storage/{{$slider->slider_image}}">
 
