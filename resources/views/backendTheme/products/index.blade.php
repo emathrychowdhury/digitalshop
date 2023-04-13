@@ -62,6 +62,19 @@
                                         style="font-size: 11px">Delete</button>
 
                                         </form>
+                                        @if($product->status ==1)
+                                           <a
+                                               href="{{route('product.active',$product->id)}}"
+                                               class="btn btn-primary btn-sm" title="active">
+                                               <i class="fa-solid fa fa-thumbs-up"></i>
+                                           </a>
+                                        @else
+                                            <a
+                                                href="{{route('product.inactive',$product->id)}}"
+                                                class="btn btn-primary btn-sm" title="inactive">
+                                                <i class="fa-solid fa fa-thumbs-up"></i>
+                                            </a>
+                                        @endif
                                     </td>
 {{--                                    <td>--}}
 {{--                                        @if($product->status==1)--}}

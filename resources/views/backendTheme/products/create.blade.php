@@ -71,6 +71,20 @@
                         @enderror
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="inputInactive" class="col-sm-3 col-form-label">Inactive</label>
+                    <div class="col-8">
+                        <input
+                            type="checkbox"
+                            class="form-control"
+                            id="inputInactive"
+                            name="inactive"
+                            value="1">
+                        @error('inactive')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                </div>
 
                 <div class="mb-3">
                     <div class="col-sm-8">

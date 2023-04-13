@@ -107,6 +107,17 @@ class ProductController extends Controller
         return redirect()->route('products.index')->withMessage('product deleted successfully');
     }
 
+    public function ProductInactive($id)
+    {
+        Product::findOrFail($id)->update(['status'=>0]);
+        return redirect()->route('products.index')->withMessage('product Inactive successfully');
+    }
+    public function ProductActive($id)
+    {
+        Product::findOrFail($id)->update(['status'=>1]);
+        return redirect()->route('products.index')->withMessage('product Active successfully');
+    }
+
     public function uploadImage($file)
     {
         $fileName=time().'.'.$file->getClientOriginalExtension();
